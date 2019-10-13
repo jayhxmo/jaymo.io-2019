@@ -62,7 +62,7 @@ h2.underlay__row--flipped {
 }
 
 @for $i from 2 through 5 {
-	$opacity: calc(1 - (#{$i} - 1) * 0.12);;
+	$opacity: calc(1 - (#{$i} - 1) * 0.12);
 	h2.underlay__row:nth-child(#{$i}) {
 		opacity: $opacity;
 		$x: ($i - 1) * 100 / 810 * 100vh;
@@ -100,22 +100,31 @@ h2.underlay__row:nth-child(10) {
 	@include flexbox;
 	align-items: baseline;
 
-	margin: 0 0 spx(24px) 0;
+	margin: 0 0 spx(18px) 0;
 	font-weight: 600;
 }
 
-h1.content__title__english {
+.content__title__english {
 	flex: 0 auto;
 	margin: 0;
+	overflow: hidden;
 
-	font-size: spx(48px);
-	line-height: 1;
 }
 
-h4.content__title__korean {
+h1.content__title__english__content {
+	margin: 0;
+	font-size: spx(48px);
+	line-height: 1.25;
+}
+
+.content__title__korean {
 	flex: 0 auto;
 	margin: 0 0 0 spx(12px);
+	overflow: hidden;
+}
 
+h4.content__title__korean__content {
+	margin: 0;
 	font-family: 'Gothic A1', sans-serif;
 	font-size: spx(16px);
 	line-height: 1;
@@ -128,10 +137,16 @@ h4.content__title__korean {
 .content__group__line {
 	margin: 0;
 	line-height: spx(30px);
+	overflow: hidden;
+}
+
+.content__group__line__content {
+	margin: 0;
 	font-size: spx(18px);
 	font-weight: 400;
 	// opacity: 0.8;
 	color: #ccc;
+	overflow: hidden;
 }
 
 a {
@@ -154,4 +169,31 @@ a {
 	.content__group__line {
 		flex: 1 auto;
 	}
+}
+
+@keyframes animation-cover--fade {
+	0% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0;
+	}
+}
+
+div#animation-cover {
+	position: fixed;
+	z-index: 999999999;
+	top: 0;
+	left: 0;
+
+	display: block;
+	width: 100vw;
+	height: 100vw;
+
+	background: black;
+	opacity: 1;
+
+	animation: 800ms ease-in-out 0ms 1 forwards animation-cover--fade;
+	pointer-events: none;
 }
