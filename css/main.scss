@@ -1,0 +1,157 @@
+@import 'mixins';
+
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 16px;
+	@include responsive-font(16, 18);
+}
+
+html,
+body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	background: black;
+
+	font-family: halyard-display, 'Halyard Display', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+div.underlay {
+	position: fixed;
+	z-index: 0;
+	top: 0;
+	left: 0;
+
+	width: 100vw;
+	height: 100vw;
+	margin: 0;
+	padding: 0;
+
+	overflow: hidden;
+}
+
+h2.underlay__row {
+	margin: 0 0 1.11111111vh 0;
+	padding: 0;
+
+	color: #222;
+	opacity: 1;
+
+	line-height: 1;
+	font-size: 8.888888888vh;
+	font-weight: 600;
+
+	white-space: nowrap;
+
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+h2.underlay__row--flipped {
+	@include transform(scale(1, -1));
+}
+
+@for $i from 2 through 5 {
+	$opacity: calc(1 - (#{$i} - 1) * 0.12);;
+	h2.underlay__row:nth-child(#{$i}) {
+		opacity: $opacity;
+		$x: ($i - 1) * 100 / 810 * 100vh;
+		@include transform(translateX(-$x));
+	}
+
+	h2.underlay__row:nth-child(#{11 - $i}) {
+		opacity: $opacity;
+		$x: (5 - $i) * 100 / 810 * 100vh;
+		@include transform(translateX(-$x) scale(1, -1));
+	}
+}
+
+h2.underlay__row:nth-child(6) {
+	margin: 3.20987654vh 0 1.111111111vh 0;
+}
+
+h2.underlay__row:nth-child(10) {
+	@include transform(translateX(-400 / 810 * 100vh) scale(1, -1));
+}
+
+.content {
+	position: relative;
+	top: 50%;
+	z-index: 1;
+	@include transform(translateY(-50%));
+
+	width: spx(453px);
+	margin: 0 auto;
+
+	color: white;
+}
+
+.content__title {
+	@include flexbox;
+	align-items: baseline;
+
+	margin: 0 0 spx(24px) 0;
+	font-weight: 600;
+}
+
+h1.content__title__english {
+	flex: 0 auto;
+	margin: 0;
+
+	font-size: spx(48px);
+	line-height: 1;
+}
+
+h4.content__title__korean {
+	flex: 0 auto;
+	margin: 0 0 0 spx(12px);
+
+	font-family: 'Gothic A1', sans-serif;
+	font-size: spx(16px);
+	line-height: 1;
+}
+
+.content__group {
+	margin: 0 0 spx(14px) 0;
+}
+
+.content__group__line {
+	margin: 0;
+	line-height: spx(30px);
+	font-size: spx(18px);
+	font-weight: 400;
+	// opacity: 0.8;
+	color: #ccc;
+}
+
+a {
+	color: #ccc;
+	font-weight: 600;
+	text-decoration: none;
+	border-bottom: 2px solid #ccc;
+	@include transition(all, 150ms);
+
+	&:hover {
+		color: white;
+		border-bottom: 2px solid rgba(255, 255, 255, 0);
+	}
+}
+
+.content__group--links {
+	margin: spx(28px) 0 0 0;
+	@include flexbox();
+
+	.content__group__line {
+		flex: 1 auto;
+	}
+}

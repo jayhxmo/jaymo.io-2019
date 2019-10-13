@@ -1,0 +1,66 @@
+$default-width: 1440px;
+$max-width: 1680px;
+
+@function strip-unit($number) {
+    @if type-of($number) == 'number' and not unitless($number) {
+        @return $number / ($number * 0 + 1);
+    }
+
+    @return $number;
+}
+
+@mixin flexbox() {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+
+@mixin responsive-font(
+    $min-size: (
+        $font-size - 2
+    ),
+    $size: $font-size,
+    $limit: $max-width
+) {
+    $baseline: $default-width;
+    $font-multiplier: (($size - $min-size) / (strip-unit($limit) - strip-unit($baseline)));
+    $font-baseline: ($min-size - $font-multiplier * strip-unit($baseline));
+    @if $min-size>=$size {
+        @warn 'Responsive font: min-size equal or greater than size';
+    }
+    font-size: #{$min-size}px;
+    font-size: calc(#{$min-size}px * #{var(--scale-multiplier)});
+    @media (min-width: $baseline) {
+        font-size: #{$min-size}px;
+        font-size: calc(
+            (#{$font-multiplier} * #{100vw} + (#{$font-baseline}px)) * #{var(--scale-multiplier)}
+        );
+    }
+    @media (min-width: $limit) {
+        font-size: #{$size}px;
+        font-size: calc(#{$size}px * #{var(--scale-multiplier)});
+    }
+}
+
+@mixin transform($value) {
+	-moz-transform: $value;
+	-webkit-transform: $value;
+	-o-transform: $value;
+	-ms-transform: $value;
+	transform: $value;
+}
+
+@function spx($size) {
+    $fs: strip-unit($size);
+    @return ($fs / 16) * 1rem;
+}
+
+@mixin transition($property: all, $value: $transition-enter) {
+    -webkit-transition: $property $value cubic-bezier(0.64, 0.04, 0.35, 1);
+    -moz-transition: $property $value cubic-bezier(0.64, 0.04, 0.35, 1);
+    -ms-transition: $property $value cubic-bezier(0.64, 0.04, 0.35, 1);
+    -o-transition: $property $value cubic-bezier(0.64, 0.04, 0.35, 1);
+    transition: $property $value cubic-bezier(0.64, 0.04, 0.35, 1);
+}
