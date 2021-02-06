@@ -20,6 +20,9 @@ const onLoad = function() {
 		.set(document.getElementsByClassName('content__group__line__content')[5], { yPercent: 100 })
 		.set(document.getElementsByClassName('content__group__line__content')[6], { yPercent: 100 })
 		.set(document.getElementsByClassName('content__group__line__content')[7], { yPercent: 100 })
+		.set(document.getElementsByClassName('content__group__line__content')[8], { yPercent: 100 })
+		// .set(document.getElementsByClassName('content__group__line__content')[9], { yPercent: 100 })
+		// .set(document.getElementsByClassName('content__group__line__content')[10], { yPercent: 100 })
 		// .set(document.getElementsByClassName('content__group__line__content')[8], { yPercent: 100 })
 		.to(document.querySelector('.content__title__english__content'), 0.8, { ease: 'Mo', yPercent: 0 })
 		.to(document.querySelector('.content__title__korean__content'), 0.8, { ease: 'Mo', yPercent: 0 }, '-=0.7')
@@ -27,11 +30,13 @@ const onLoad = function() {
 		.to(document.getElementsByClassName('content__group__line__content')[1], 0.8, { ease: 'Mo', yPercent: 0 }, '-=0.7')
 		.to(document.getElementsByClassName('content__group__line__content')[2], 0.8, { ease: 'Mo', yPercent: 0 }, '-=0.7')
 		.to(document.getElementsByClassName('content__group__line__content')[3], 0.8, { ease: 'Mo', yPercent: 0 }, '-=0.7')
-		.to(document.getElementsByClassName('content__group__line__content')[4], 0.8, { ease: 'Mo', yPercent: 0 }, '-=0.7')
+		.to(document.getElementsByClassName('content__group__line__content')[4], 0.8, { ease: 'Mo', yPercent: 0 }, '-=0.775')
 		.to(document.getElementsByClassName('content__group__line__content')[5], 0.8, { ease: 'Mo', yPercent: 0 }, '-=0.775')
 		.to(document.getElementsByClassName('content__group__line__content')[6], 0.8, { ease: 'Mo', yPercent: 0 }, '-=0.775')
 		.to(document.getElementsByClassName('content__group__line__content')[7], 0.8, { ease: 'Mo', yPercent: 0 }, '-=0.775')
-		// .to(document.getElementsByClassName('content__group__line__content')[8], 0.8, { ease: 'Mo', yPercent: 0 }, '-=0.775');
+		.to(document.getElementsByClassName('content__group__line__content')[8], 0.8, { ease: 'Mo', yPercent: 0 }, '-=0.775')
+		// .to(document.getElementsByClassName('content__group__line__content')[9], 0.8, { ease: 'Mo', yPercent: 0 }, '-=0.775')
+		// .to(document.getElementsByClassName('content__group__line__content')[10], 0.8, { ease: 'Mo', yPercent: 0 }, '-=0.775');
 		// .to(document.querySelector('.underlay'), 0.8, { ease: 'Mo', opacity: 1 }, '-=0.775');
 
 	let timelineUnderlay = new TimelineMax({ paused: true })
